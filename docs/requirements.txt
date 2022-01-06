@@ -1,0 +1,11 @@
+Use cases
+- sign up
+- sign in
+- enroll
+- mark lecture as concluded
+- select lecture in course
+- create course
+- create lecture
+- update user
+- update course
+- update lecture
