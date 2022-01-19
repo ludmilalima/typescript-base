@@ -1,12 +1,13 @@
 {
-  "name": "twd-clean-architecture-api",
+  "name": "twd-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node dist/main/server.js",
-    "build": "rimraf dist && tsc -p tsconfig-build.json"
+    "start": "node dist/server.js",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "build-docker": "tsc -p tsconfig-build.json"
   },
   "keywords": [],
   "author": "",
