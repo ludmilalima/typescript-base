@@ -1,0 +1,23 @@
+"clientId": "3bff8a86-61b2-43ef-8b32-cb58626d63d5",
+"clientSecret": "d~VoCkeWGsOuq1WxGS25SxvqgC8GXzE8Hl",
+"subscriptionId": "a018a9bc-18f8-4a7c-b620-b0738c8a0dca",
+"tenantId": "4de3a1ea-fae4-4f85-9657-9a9905d85269",
+"activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+"resourceManagerEndpointUrl": "https://management.azure.com/",
+"activeDirectoryGraphResourceId": "https://graph.windows.net/",
+"sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+"galleryEndpointUrl": "https://gallery.azure.com/",
+"managementEndpointUrl": "https://management.core.windows.net/"
+
+"canDelegate": null,
+"condition": null,
+"conditionVersion": null,
+"description": null,
+"id": "/subscriptions/a018a9bc-18f8-4a7c-b620-b0738c8a0dca/resourceGroups/theWiseDev/providers/Microsoft.ContainerRegistry/registries/twdContainer/providers/Microsoft.Authorization/roleAssignments/6a848620-c00d-4364-b71f-175df9875098",
+"name": "6a848620-c00d-4364-b71f-175df9875098",
+"principalId": "6cc5ab36-07a1-41cc-8ba8-1fb68feeaad2",
+"principalType": "ServicePrincipal",
+"resourceGroup": "theWiseDev",
+"roleDefinitionId": "/subscriptions/a018a9bc-18f8-4a7c-b620-b0738c8a0dca/providers/Microsoft.Authorization/roleDefinitions/8311e382-0749-4cb8-b61a-304f252e45ec",
+"scope": "/subscriptions/a018a9bc-18f8-4a7c-b620-b0738c8a0dca/resourceGroups/theWiseDev/providers/Microsoft.ContainerRegistry/registries/twdContainer",
+"type": "Microsoft.Authorization/roleAssignments"
