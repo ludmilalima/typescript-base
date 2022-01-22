@@ -2,8 +2,7 @@
 export class Lecture {
     // descrição da aula
     readonly description: string
+    // url do video da aula
+    readonly videoUrl: string
     // descricao é obrigatoria
-    constructor (description: string) {
-      this.description = description
-    }
 }
