@@ -2,7 +2,7 @@ import { Module } from './module'
 // criar classe curso
 export class Course {
     // curso pode conter varios modulos
-    public modules: Array<Module> = []
+    private modules: Array<Module> = []
     // uma referencia
     public reference: string
     // uma descricao
