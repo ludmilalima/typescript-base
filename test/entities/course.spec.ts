@@ -1,4 +1,5 @@
 import { Course, Module, Lecture } from '../../src/entities'
+
 // descrever os componentes de um curso como módulos
 describe('Course', () => {
   // adicionar aulas aos modulos
@@ -8,15 +9,30 @@ describe('Course', () => {
     // add tal aula
     const lecture: Lecture = {
       // contendo tal descrição
+      description: 'Branching',
+      videoUrl: 'http://youtube.com/1234'
+    }
+    // efetuar tal vinculo
+    module.add(lecture)
+    // verificação do vinculo do módulo com uma aula
+    expect(module.includes(lecture)).toBeTruthy()
+  })
+
+  // não repetir aulas nos modulos
+  it('should not be able to add the same lectures twice in a module', () => {
+    // dado tal modulo
+    const module = new Module('Fundamentals')
+    // add tal aula
+    const lecture: Lecture = {
+      // contendo tal descrição
       description: 'Branching'
     }
     // efetuar tal vinculo
     module.add(lecture)
-    // um modulo deve ter ao menos ma aula
-    expect(module.lectures.length).toBe(1)
     // verificação do vinculo do módulo com uma aula
-    expect(module.lectures.includes(lecture)).toBeTruthy()
+    expect(module.includes(lecture)).toBeTruthy()
   })
+
   // cursos podem ser subdivididos em módulos
   it('should be able to add modules to courses', () => {
     // dado tal curso
@@ -32,9 +48,7 @@ describe('Course', () => {
     module.add(lecture)
     // tal curso contem tal modulo
     course.add(module)
-    // um curso deve conter ao menos um modulo
-    expect(course.modules.length).toBe(1)
     // verificação do vinculo do curso com o modulo
-    expect(course.modules.includes(module)).toBeTruthy()
+    expect(course.includes(module)).toBeTruthy()
   })
 })
