@@ -7,11 +7,7 @@ describe('Course', () => {
     // dado tal modulo
     const module = new Module('Fundamentals')
     // add tal aula
-    const lecture: Lecture = {
-      // contendo tal descrição
-      description: 'Branching',
-      videoUrl: 'http://youtube.com/1234'
-    }
+    const lecture: Lecture = new Lecture('Branching', 'http://youtube.com/1234')
     // efetuar tal vinculo
     module.add(lecture)
     // verificação do vinculo do módulo com uma aula
@@ -23,14 +19,19 @@ describe('Course', () => {
     // dado tal modulo
     const module = new Module('Fundamentals')
     // add tal aula
-    const lecture: Lecture = {
-      // contendo tal descrição
-      description: 'Branching'
-    }
+    const lecture: Lecture = new Lecture('Branching', 'http://youtube.com/1234')
+
+    // duplicando a aula para o teste
+    const sameLecture: Lecture = new Lecture('Branching', 'http://youtube.com/1234')
+
     // efetuar tal vinculo
     module.add(lecture)
+    // adicionar novamente a mesma aula
+    module.add(sameLecture)
     // verificação do vinculo do módulo com uma aula
     expect(module.includes(lecture)).toBeTruthy()
+    // verifica duplicidade na inserção
+    expect(module.numberOfLectures).toBe(1)
   })
 
   // cursos podem ser subdivididos em módulos
@@ -41,9 +42,7 @@ describe('Course', () => {
     // dado tal módulo
     const module = new Module('Fundamentals')
     // dada tal aula
-    const lecture: Lecture = {
-      description: 'Branching'
-    }
+    const lecture: Lecture = new Lecture('Branching', 'http://youtube.com/1234')
     // tal modulo contem tal aula
     module.add(lecture)
     // tal curso contem tal modulo
