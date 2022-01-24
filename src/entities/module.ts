@@ -10,13 +10,19 @@ export class Module {
     this.name = name
   }
 
+  get numberOfLectures (): number {
+    return this.lectures.length
+  }
+
   // metodo para adição de aulas em modulos
   add (lecture: Lecture): void {
-    this.lectures.push(lecture)
+    if (!this.includes(lecture)) {
+      this.lectures.push(lecture)
+    }
   }
 
   // verificar se contem uma aula
   includes (lecture: Lecture): boolean {
-    return this.lectures.includes(lecture)
+    return this.lectures.find(lec => lec.equals(lecture)) !== undefined
   }
 }
