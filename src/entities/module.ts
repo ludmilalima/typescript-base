@@ -16,9 +16,13 @@ export class Module {
 
   // metodo para adição de aulas em modulos
   add (lecture: Lecture): void {
-    if (!this.includes(lecture)) {
+    if (!this.includesLectureWithSameName(lecture)) {
       this.lectures.push(lecture)
     }
+  }
+
+  private includesLectureWithSameName (lecture: Lecture): boolean {
+    return this.lectures.find(lec => lec.description === lecture.description) !== undefined
   }
 
   // verificar se contem uma aula
