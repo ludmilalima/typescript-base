@@ -29,4 +29,20 @@ export class Module {
   includes (lecture: Lecture): boolean {
     return this.lectures.find(lec => lec.equals(lecture)) !== undefined
   }
+
+  move (lecture: Lecture, to: number): void {
+    if (to > this.lectures.length || to <= 0) {
+      return
+    }
+    const from = this.position(lecture)
+    this.lectures.splice(to - 1, 0, this.lectures.splice(from - 1, 1)[0])
+  }
+
+  position (lecture: Lecture): number {
+    const lectureInModule = this.lectures.find(lec => lec.equals(lecture))
+    if (lectureInModule === undefined) {
+      return undefined
+    }
+    return this.lectures.indexOf(lectureInModule) + 1
+  }
 }
