@@ -52,4 +52,27 @@ describe('Module', () => {
     // verifica duplicidade na inserção
     expect(module.includes(otherLecture)).toBeFalsy()
   })
+
+  // não permite mudar ordem das aulas
+  it('should be able to rearrange the order of lectures', () => {
+    // dado o modulo Fundamentals
+    const module = new Module('Fundamentals')
+    // dadas as aulas branching, comminting and pushing
+    const branching: Lecture = new Lecture('Branching', 'https://youtube.com/branching')
+    const commiting: Lecture = new Lecture('Commiting', 'https://youtube.com/commiting')
+    const pushing: Lecture = new Lecture('Pushing', 'https://youtube.com/pushing')
+
+    // adicionar as aulas ordenadamente
+    module.add(branching)
+    module.add(commiting)
+    module.add(pushing)
+
+    // tentar reordenar
+    module.move(branching, 3)
+
+    // confirmação do bloqueio da reordenação
+    expect(module.position(commiting)).toBe(1)
+    expect(module.position(pushing)).toBe(2)
+    expect(module.position(branching)).toBe(3)
+  })
 })
