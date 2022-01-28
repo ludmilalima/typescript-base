@@ -75,28 +75,45 @@ describe('Module', () => {
     expect(module.position(pushing)).toBe(2)
     expect(module.position(branching)).toBe(3)
   })
-})
 
-it('should handle unexisting lecture', () => {
-  const module = new Module('Fundamentals')
-  const branching: Lecture = new Lecture('Branching', 'https://youtube.com/branching')
+  it('should handle unexisting lecture', () => {
+    const module = new Module('Fundamentals')
+    const branching: Lecture = new Lecture('Branching', 'https://youtube.com/branching')
 
-  expect(module.position(branching)).toBeUndefined()
-})
+    expect(module.position(branching)).toBeUndefined()
+  })
 
-it('should handle exceeding position while rearranging', () => {
-  const module = new Module('Fundamentals')
-  const branching: Lecture = new Lecture('Branching', 'https://youtube.com/branching')
-  const commiting: Lecture = new Lecture('Commiting', 'https://youtube.com/commiting')
-  const pushing: Lecture = new Lecture('Pushing', 'https://youtube.com/pushing')
+  it('should handle exceeding position while rearranging', () => {
+    const module = new Module('Fundamentals')
+    const branching: Lecture = new Lecture('Branching', 'https://youtube.com/branching')
+    const commiting: Lecture = new Lecture('Commiting', 'https://youtube.com/commiting')
+    const pushing: Lecture = new Lecture('Pushing', 'https://youtube.com/pushing')
 
-  module.add(branching)
-  module.add(commiting)
-  module.add(pushing)
+    module.add(branching)
+    module.add(commiting)
+    module.add(pushing)
 
-  module.move(branching, 10)
+    module.move(branching, 10)
 
-  expect(module.position(branching)).toBe(1)
-  expect(module.position(commiting)).toBe(2)
-  expect(module.position(pushing)).toBe(3)
+    expect(module.position(branching)).toBe(1)
+    expect(module.position(commiting)).toBe(2)
+    expect(module.position(pushing)).toBe(3)
+  })
+
+  it('should handle negative position while rearranging', () => {
+    const module = new Module('Fundamentals')
+    const branching: Lecture = new Lecture('Branching', 'https://youtube.com/branching')
+    const commiting: Lecture = new Lecture('Commiting', 'https://youtube.com/commiting')
+    const pushing: Lecture = new Lecture('Pushing', 'https://youtube.com/pushing')
+
+    module.add(branching)
+    module.add(commiting)
+    module.add(pushing)
+
+    module.move(branching, 0)
+
+    expect(module.position(branching)).toBe(1)
+    expect(module.position(commiting)).toBe(2)
+    expect(module.position(pushing)).toBe(3)
+  })
 })
