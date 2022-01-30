@@ -1,10 +1,11 @@
 import { Lecture } from './lecture'
+import { moveInArray } from './util'
 // classe para um módulo de curso
 export class Module {
   // um modulo pode conter varias aulas
   private readonly lectures: Array<Lecture> = []
   // um nome
-  private name: string
+  public readonly name: string
   // o nome do modulo é obrigatorio na construção
   constructor (name: string) {
     this.name = name
@@ -35,7 +36,7 @@ export class Module {
       return
     }
     const from = this.position(lecture)
-    this.lectures.splice(to - 1, 0, this.lectures.splice(from - 1, 1)[0])
+    moveInArray(this.lectures, from - 1, to - 1)
   }
 
   position (lecture: Lecture): number {
