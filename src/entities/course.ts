@@ -23,7 +23,11 @@ export class Course {
 
     // modulos podem ser adicionados
     add (module: Module): void {
-      this.modules.push(module)
+      if (!this.includesModuleWithSameName(module)) this.modules.push(module)
+    }
+
+    private includesModuleWithSameName (module: Module): boolean {
+      return this.modules.find(mod => mod.name === module.name) !== undefined
     }
 
     // verificar se contem um modulo
@@ -32,6 +36,7 @@ export class Course {
     }
 
     move (module: Module, to: number): void {
+      if (to > this.modules.length || to < 1) return
       const from = this.position(module)
       moveInArray(this.modules, from - 1, to - 1)
     }
