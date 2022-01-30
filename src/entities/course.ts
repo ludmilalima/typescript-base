@@ -16,6 +16,10 @@ export class Course {
       this.description = description
     }
 
+    get numberOfModules (): number {
+      return this.modules.length
+    }
+
     // modulos podem ser adicionados
     add (module: Module): void {
       this.modules.push(module)
