@@ -1,7 +1,7 @@
 import { Lecture } from '../../src/entities'
+import { Link } from '../../src/entities/link'
 import { Material } from '../../src/entities/material'
 import { Pdf } from '../../src/entities/pdf'
-import { Link } from '../../src/entities/link'
 
 describe('Lecture', () => {
   it('should be able to add further material to lectures', () => {

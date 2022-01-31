@@ -1,25 +1,19 @@
+import { Container } from './container'
 import { Material } from './material'
+import { Part } from './part'
 
-// classe para aulas
-export class Lecture {
-  // descrição da aula
+export class Lecture implements Part {
+  private readonly materials: Container<Material> = new Container<Material>()
   readonly description: string
-  // url do video da aula
   readonly videoUrl: string
-  // lista de materiais extras
-  private readonly materials: Array<Material> = []
 
   constructor (description: string, videoUrl: string) {
     this.description = description
     this.videoUrl = videoUrl
   }
 
-  equals (other: Lecture): boolean {
-    return this.description === other.description && this.videoUrl === other.videoUrl
-  }
-
   add (material: Material): void {
-    this.materials.push(material)
+    this.materials.add(material)
   }
 
   includes (material: Material): boolean {
@@ -27,7 +21,10 @@ export class Lecture {
   }
 
   remove (material: Material): void {
-    const position = this.materials.indexOf(material)
-    if (position !== -1) this.materials.splice(position, 1)
+    this.materials.remove(material)
+  }
+
+  equals (other: Lecture): boolean {
+    return this.description === other.description
   }
 }
