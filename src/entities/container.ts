@@ -1,3 +1,5 @@
+import { Either, left, right } from '../shared/either'
+import { ExistingPartError } from './errors/existing-part-error'
 import { Part } from './part'
 
 export class Container<T extends Part> {
@@ -7,8 +9,15 @@ export class Container<T extends Part> {
     return this.parts.length
   }
 
-  add (part: T): void {
-    if (!this.includes(part)) this.parts.push(part)
+  add (part: T): Either<ExistingPartError, void> {
+    if (!this.includes(part)) {
+      return right(this.push(part))
+    }
+    return left(new ExistingPartError())
+  }
+
+  private push (part: T): void {
+    this.parts.push(part)
   }
 
   includes (part: T): boolean {

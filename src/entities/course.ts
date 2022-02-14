@@ -1,5 +1,8 @@
 import { Lecture } from '.'
+import { Either, left } from '../shared/either'
 import { Container } from './container'
+import { ExistingModuleError } from './errors/existing-module-error'
+import { ExistingPartError } from './errors/existing-part-error'
 import { Module } from './module'
 
 export class Course {
@@ -16,8 +19,12 @@ export class Course {
     return this.modules.numberOfParts
   }
 
-  add (module: Module): void {
-    this.modules.add(module)
+  add (module: Module): Either<ExistingPartError, void> {
+    const errorOrVoid = this.modules.add(module)
+    if (errorOrVoid.isLeft()) {
+      return left(new ExistingModuleError())
+    }
+    return errorOrVoid
   }
 
   includes (module: Module): boolean {
