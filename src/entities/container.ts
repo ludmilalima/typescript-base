@@ -1,6 +1,6 @@
 import { Either, left, right } from '../shared/either'
 import { ExistingElementError } from './errors/existing-element-error'
-import { Element } from './element'
+import { Element } from './part'
 
 export class Container<T extends Element> {
   private readonly elements: Array<T> = []

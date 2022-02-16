@@ -1,6 +1,6 @@
 import { Container } from './container'
 import { Lecture } from './lecture'
-import { Element } from './element'
+import { Element } from './part'
 import { ExistingElementError } from './errors/existing-element-error'
 import { Either } from '../shared/either'
 

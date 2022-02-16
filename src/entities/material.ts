@@ -1,4 +1,4 @@
-import { Element } from './element'
+import { Element } from './part'
 
 export interface Material extends Element {
   url: string
